@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.edit
+import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +16,9 @@ class MainActivity : AppCompatActivity() {
         rock.setOnClickListener { onJankenButtonTapped(it) }
         scissors.setOnClickListener { onJankenButtonTapped(it) }
         paper.setOnClickListener { onJankenButtonTapped(it) }
+
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        pref.edit { clear() }
     }
 
     fun onJankenButtonTapped(view: View?) {
